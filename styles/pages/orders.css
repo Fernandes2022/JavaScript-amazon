@@ -41,6 +41,7 @@
 .order-header-left-section {
   display: flex;
   flex-shrink: 0;
+  
 }
 
 .order-header-label {
@@ -65,7 +66,7 @@
   }
 
   .order-header-left-section {
-    flex-direction: column;
+    flex-direction: column; 
   }
 
   .order-header-label {
