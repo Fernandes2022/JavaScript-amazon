@@ -58,14 +58,8 @@ products.forEach((product) => {
     productsHTML += html;
 });
 
-document.querySelector('.js-products-grid').innerHTML = productsHTML;
-
-document.querySelectorAll('.js-add-to-cart')
-.forEach((button) => {
-  button.addEventListener('click', () => {
-   const productId = button.dataset.productId;
-    
-   let matchingItem;
+function addToCart(productId) {
+  let matchingItem;
 
    cart.forEach((item) => {
     if (productId === item.productId){
@@ -83,6 +77,16 @@ document.querySelectorAll('.js-add-to-cart')
       quantity: quantity
      });
    }
+}
+
+document.querySelector('.js-products-grid').innerHTML = productsHTML;
+
+document.querySelectorAll('.js-add-to-cart')
+.forEach((button) => {
+  button.addEventListener('click', () => {
+   const productId = button.dataset.productId;
+    
+   addToCart(productId);
 
     let cartQuantity = 0;
     cart.forEach((item) => {
@@ -91,7 +95,7 @@ document.querySelectorAll('.js-add-to-cart')
    
     document.querySelector('.js-cart-quantity')
     .innerHTML =  cartQuantity;
-    innerSelect;
+    
 
     const addedMessage = document.querySelector(`.added-${productId}`);
     addedMessage.classList.add('added-visible');
