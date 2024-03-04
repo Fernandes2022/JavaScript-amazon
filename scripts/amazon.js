@@ -1,4 +1,4 @@
-import {cart} from '../data/cart.js';
+import {cart, saveToStorage} from '../data/cart.js';
 import {products} from '../data/products.js';
 import { formatCurrency } from './utils/money.js';
 
@@ -78,6 +78,7 @@ function addToCart(productId) {
       quantity: quantity
      });
    }
+   saveToStorage();
 }
 
 document.querySelector('.js-products-grid').innerHTML = productsHTML;
@@ -103,6 +104,8 @@ document.querySelectorAll('.js-add-to-cart')
     setTimeout(() => {
       addedMessage.classList.remove('added-visible');    
     }, 1500);  
+    
+    saveToStorage();
   });
 });
 
