@@ -77,7 +77,8 @@ function addToCart(productId) {
    } else {
     cart.push({
       productId: productId, 
-      quantity: quantity
+      quantity: quantity,
+      deliveryOptionId: '1'
      });
    }
    saveToStorage();
