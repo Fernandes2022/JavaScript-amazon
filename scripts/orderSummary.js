@@ -5,6 +5,7 @@ import { formatCurrency
 import { saveToStorage } from '../data/cart.js';
 import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
 import {deliveryOptions, getDeliveryOption} from '../data/deliveryOptions.js';
+import { renderPaymentSummary } from './paymentSummary.js';
 
 
 
@@ -185,6 +186,7 @@ document.querySelectorAll('.js-delete-link')
    
    container.remove();
    updateCartQuantity();
+   renderPaymentSummary();
   })
 });
 
@@ -194,6 +196,7 @@ forEach((element) => {
     const {productId, deliveryOptionId} = element.dataset;
     updateDeliveryOption(productId, deliveryOptionId);
     renderOrderSummary();
+    renderPaymentSummary();
   })
 });
 }
