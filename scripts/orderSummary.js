@@ -14,8 +14,7 @@ export function renderOrderSummary(){
 
   const today = dayjs();
   const deliveryDate = today.add(7, 'days'); 
-  console.log(deliveryDate.format('dddd, MMMM, D'));
-  
+    
   
    updateCartQuantity();
   function updateCartQuantity(){
@@ -36,6 +35,7 @@ cart.forEach((item) => {
   const matchingProduct = getProduct(productId);
 
   const deliveryOptionId = item.deliveryOptionId;
+  console.log(deliveryOptionId)
 
   const deliveryOption = getDeliveryOption(deliveryOptionId);
 
@@ -47,7 +47,7 @@ cart.forEach((item) => {
   ); 
   
     const dateString = deliveryDate.format('dddd, MMMM D');
-   
+       
 const summaryHtml = `<div class="cart-item-container js-cart-item-container-${matchingProduct.id}">
 <div class="delivery-date">
   Delivery date: ${dateString}
@@ -107,7 +107,7 @@ function deliveryOptionsHTML(matchingProduct, item) {
     ? 'FREE'
     : `$${deliveryOption.priceCents / 100}`;
 
-
+    
     const isChecked = deliveryOption.id === item.deliveryOptionId;
 
     html += `<div class="delivery-option js-delivery-option" data-product-id="${matchingProduct.id}" data-delivery-option-id="${deliveryOption.id}">
